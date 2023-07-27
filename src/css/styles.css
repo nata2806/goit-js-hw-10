@@ -8,8 +8,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #fafafa;
-    color: #212121;
-    line-height: 1.5;
+    color: #100e0e;
+    line-height: 1.75;
   }
   
   img {
@@ -19,8 +19,8 @@
   }
   
   .breed-select {
-    margin-top: 40px;
-    max-width: 300px;
+    margin-top: 50px;
+    max-width: 350px;
   }
   .cat-info {
     display: flex;
