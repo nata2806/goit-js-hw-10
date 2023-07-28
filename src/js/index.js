@@ -4,25 +4,32 @@ import SlimSelect from 'slim-select'
 import 'slim-select/dist/slimselect.css'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+Notiflix.Notify.init({
+    timeout: 6000,
+    width: '400px',
+    fontSize: '16px',
+    cssAnimationStyle: 'from-bottom',
+  });
 
-
-axios.defaults.headers.common["x-api-key"] = "live_uKiQn5YhvvB8ma2RCk1Fn1pHnYCdOMMJJLTWB2cq0QkgwMJmlXPYgyZZC4Y9Q3aF";
+axios.defaults.headers.common["x-api-key"] = 
+"live_uKiQn5YhvvB8ma2RCk1Fn1pHnYCdOMMJJLTWB2cq0QkgwMJmlXPYgyZZC4Y9Q3aF";
 
 const selectCat = document.querySelector(".breed-select")
 const catInfo = document.querySelector(".cat-info")
 const loader = document.querySelector('.loader')
 const error = document.querySelector('.error')
+const errorMessage = 'Oops! Something went wrong! Try reloading the page!';
 
 selectCat.addEventListener("change", onSelectChange)
 
 
 function createCatList() {
-    // Показуємо лоадер перед початком запиту
+   
     loader.classList.remove('is-hidden');
     selectCat.classList.add('is-hidden');
     error.classList.add('is-hidden')
 
-    //обробляємо результат запиту на бекенд (всі породи котів)
+    
     fetchBreeds()
         .then(data => {
 
@@ -31,11 +38,11 @@ function createCatList() {
 
             selectCat.innerHTML = optionsList;
 
-            //стилізуєсо селект з доп бібліотеки SlimSelect 
+            
             new SlimSelect({
                 select: selectCat
             })
-            // Отримали дані успішно, ховаємо лоадер показуємо селект
+            
             loader.classList.add('is-hidden');
             selectCat.classList.remove('is-hidden')
         })
