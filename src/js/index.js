@@ -4,32 +4,24 @@ import SlimSelect from 'slim-select'
 import 'slim-select/dist/slimselect.css'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-Notiflix.Notify.init({
-    timeout: 6000,
-    width: '400px',
-    fontSize: '16px',
-    cssAnimationStyle: 'from-bottom',
-  });
 
-axios.defaults.headers.common["x-api-key"] = 
-"live_uKiQn5YhvvB8ma2RCk1Fn1pHnYCdOMMJJLTWB2cq0QkgwMJmlXPYgyZZC4Y9Q3aF";
+
+axios.defaults.headers.common["x-api-key"] = "live_C8fch3W7tmmF8fmpsXU2mdIfjeqC3R8Q3wAY9gs2QZiQFnTO5tNKg722MPHavC8b";
 
 const selectCat = document.querySelector(".breed-select")
 const catInfo = document.querySelector(".cat-info")
 const loader = document.querySelector('.loader')
 const error = document.querySelector('.error')
-const errorMessage = 'Oops! Something went wrong! Try reloading the page!';
 
 selectCat.addEventListener("change", onSelectChange)
 
 
 function createCatList() {
-   
+    
     loader.classList.remove('is-hidden');
     selectCat.classList.add('is-hidden');
     error.classList.add('is-hidden')
 
-    
     fetchBreeds()
         .then(data => {
 
@@ -38,7 +30,6 @@ function createCatList() {
 
             selectCat.innerHTML = optionsList;
 
-            
             new SlimSelect({
                 select: selectCat
             })
@@ -52,7 +43,6 @@ function createCatList() {
 }
 
 createCatList();
-
 
 
 function onSelectChange(evt) {
